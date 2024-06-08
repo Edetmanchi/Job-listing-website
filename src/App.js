@@ -1,19 +1,20 @@
  import React from 'react'
- import Navbar from './components/Navbar'
- import Hero from './components/Hero'
-import HomeCards from './components/HomeCards'
+ import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from "react-router-dom"
+ import HomePage from "./pages/HomePage"
+ import MainLayout from './layout/mainLayout'
+ import NotFoundPage from './pages/NotFoundPage'
+ import JobsPage from './pages/JobsPage'
  
- const App = () => {
-   return (
-    <>
-    <Navbar/>
-    <Hero  title = 'Become a React Dev Anywhere'
-    subtitle = 'Find the React job that fits your skill set'/>
-    <HomeCards/>
-
-    </>
-     
-   )
+ const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<MainLayout/>}>
+      <Route index element={<HomePage/>}/>
+      <Route path='/jobs'  element={<JobsPage/>}/>
+      <Route path='*'  element={<NotFoundPage/>}/>
+    </Route>
+ )
+)
+const App = () => { 
+  return <RouterProvider router={router}/>
  }
- 
  export default App
