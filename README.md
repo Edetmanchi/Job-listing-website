@@ -1,1 +1,1 @@
-# Job-listing-website
+Freela is a platform designed for both employers and developers. Employers can post jobs, while developers can access and apply for these job opportunities from anywhere. The application uses JSON Server for most of its backend functionalities
