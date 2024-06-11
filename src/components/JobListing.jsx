@@ -10,7 +10,7 @@ const JobListing = ({ isHome = false }) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch("http://localhost:8000"); // Correct URL
+        const res = await fetch("http://localhost:8000/1"); // Correct URL
           if (!res.ok) {
             throw new Error('Network response was not ok');
           }
@@ -35,7 +35,7 @@ const JobListing = ({ isHome = false }) => {
         <h2 className='text-3xl font-bold text-indigo-500 mb-6 text-center'>
           {isHome ? 'Recent Jobs' : 'Browse Jobs'}
         </h2>
-          {/* Conditionally render based on loading state */}
+          {/* Conditionally render based on loading state  */}
           {loading ? (
             <Spinner loading={loading}/>
           ) : (
@@ -44,7 +44,7 @@ const JobListing = ({ isHome = false }) => {
               <JobListings key={job.id} job={job} />
             ))}
         </div>
-          )}
+       )}
       </div>
     </section>
   );

@@ -4,12 +4,13 @@
  import MainLayout from './layout/mainLayout'
  import NotFoundPage from './pages/NotFoundPage'
  import JobsPage from './pages/JobsPage'
+import JobListings from './components/JobListings'
  
  const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<MainLayout/>}>
       <Route index element={<HomePage/>}/>
-      <Route path='/jobs'  element={<JobsPage/>}/>
+      <Route path='/jobspage'  element={<JobsPage/>}/>
       <Route path='*'  element={<NotFoundPage/>}/>
     </Route>
  )

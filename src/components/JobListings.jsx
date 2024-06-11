@@ -2,14 +2,21 @@ import { useState } from 'react';
 import {FaMapMarker} from "react-icons/fa"
 // import { FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import job from "../jobs.json"
 
+// console.log(job))
 const JobListings = ({ job }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
 
-  let description = job.description; 
+
+  if (!job || !job.description) {
+    return <div>Error: Job information is incomplete.</div>;
+  }
+
+   let description = job.description; 
 
   if (!showFullDescription) {
-    description = description.substring(0, 100) + '.....';
+    description = job.description.substring(0, 100) + '.....';
   }
   
   return (

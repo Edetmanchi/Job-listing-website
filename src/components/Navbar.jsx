@@ -1,5 +1,6 @@
 import logo from '../logo.svg';
 import { NavLink } from 'react-router-dom';
+import JobsPage from '../pages/JobsPage';
 
 const Navbar = () => {
   const linkClass = ({ isActive }) =>
@@ -23,7 +24,7 @@ const Navbar = () => {
                 <NavLink to='/' className={linkClass}>
                   Home
                 </NavLink>
-                <NavLink to='jobs' className={linkClass}>
+                <NavLink to='/jobspage' className={linkClass}>
                   Jobs
                 </NavLink>
                 <NavLink className={linkClass}
