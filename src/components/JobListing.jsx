@@ -10,7 +10,7 @@ const JobListing = ({ isHome = false }) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch("http://localhost:8000/1"); // Correct URL
+        const res = await fetch("http://localhost:8000"); // Correct URL
           if (!res.ok) {
             throw new Error('Network response was not ok');
           }
