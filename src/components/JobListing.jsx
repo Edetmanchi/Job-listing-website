@@ -26,8 +26,7 @@ const JobListing = ({ isHome = false }) => {
     fetchJobs();
   }, []);
 
-  // Reducing the job grid to just three if isHome is true
-  // const jobListing = isHome ? jobs.slice(0, 3) : jobs;
+
 
   return (
     <section className='bg-blue-50 px-4 py-10'>
