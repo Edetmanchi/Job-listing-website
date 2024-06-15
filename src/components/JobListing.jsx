@@ -1,31 +1,31 @@
 import { useState, useEffect } from 'react';
 import JobListings from './JobListings';
 import Spinner from './Spinner';
-// import jobsData from "../jobs.json";
+import jobsData from "../jobs.json";
 // import jobs from "../jobs.json"
 const JobListing = ({ isHome = false }) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const res = await fetch("http://localhost:8000"); // Correct URL
-          if (!res.ok) {
-            throw new Error('Network response was not ok');
-          }
-        const data = await res.json(); // Convert response to JSON
-        setJobs(data);
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchJobs = async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:8000"); // Correct URL
+  //         if (!res.ok) {
+  //           throw new Error('Network response was not ok');
+  //         }
+  //       const data = await res.json(); // Convert response to JSON
+  //       setJobs(data);
+  //     } catch (error) {
+  //       console.log("Error fetching data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchJobs();
-  }, []);
-
+  //   fetchJobs();
+  // }, []);
+console.log(jobsData)
 
 
   return (
@@ -39,7 +39,7 @@ const JobListing = ({ isHome = false }) => {
             <Spinner loading={loading}/>
           ) : (
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-           {jobs.map((job) => (
+           {jobsData.map((job) => (
               <JobListings key={job.id} job={job} />
             ))}
         </div>
