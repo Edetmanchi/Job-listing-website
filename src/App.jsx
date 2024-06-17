@@ -4,7 +4,7 @@
  import MainLayout from './layout/mainLayout'
  import NotFoundPage from './pages/NotFoundPage'
  import JobsPage from './pages/JobsPage'
-import JobListings from './components/JobListings'
+import JobListings from './components/JobListing'
  
  const router = createBrowserRouter(
   createRoutesFromElements(

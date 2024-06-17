@@ -1,102 +1,119 @@
-import { useState } from 'react';
-import {FaMapMarker} from "react-icons/fa"
-// import { FaMapMarker } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import job from "../jobs.json"
-
-// console.log(job))
-const JobListings = ({ job }) => {
-  const [showFullDescription, setShowFullDescription] = useState(false);
+// import { useState, useEffect } from 'react';
+// import JobListing from './JobListing';
+// // import Spinner from './Spinner';
 
 
-  if (!job || !job.description) {
-    return <div>Error: Job information is incomplete.</div>;
-  }
 
-   let description = job.description; 
+// const JobListings = ({ isHome = false }) => {
+//   const [jobs, setJobs] = useState([]);
+//   const [loading, setLoading] = useState(true);
 
-  if (!showFullDescription) {
-    description = job.description.substring(0, 100) + '.....';
-  }
-  
+//   useEffect(() => {
+//     const fetchJobs = async () => {
+//       try {
+//         const res = await fetch("http://localhost:8000"); // Correct URL
+//           if (!res.ok) {
+//             throw new Error('Network response was not ok');
+//           }
+//         const data = await res.json(); // Convert response to JSON
+//         setJobs(data);
+//       } catch (error) {
+//         console.log("Error fetching data:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchJobs();
+//   }, []);
+
+
+//   return (
+//     <section className='bg-blue-50 px-4 py-10'>
+//       <div className='container-xl lg:container m-auto'>
+//         <h2 className='text-3xl font-bold text-indigo-500 mb-6 text-center'>
+//           {isHome ? 'Recent Jobs' : 'Browse Jobs'}
+//         </h2>
+//           {/* Conditionally render based on loading state  */}
+//           {/* {loading ? (
+//             <Spinner loading={loading}/>
+//           ) : ( */}
+//           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+//            .map((job) => (
+//               <JobListing key={job.id} job={job} />
+//             ))}
+//         </div>
+
+
+//        {/* )} */}
+//       </div>
+//     </section>
+//   );
+// };
+// export default JobListings;
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import JobListing from './JobListing';
+import Spinner from './Spinner'; 
+
+const JobListings = ({ isHome = false, job }) => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("http://localhost:8000"); // Correct URLj
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        console.log(res)
+        const data = await res.json();
+        setJobs(data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+
+
+
   return (
-    <div className='bg-white rounded-xl shadow-md relative'>
-      <div className='p-4'>
-        <div className='mb-6'>
-          <div className='text-gray-600 my-2'>{job.type}</div>
-          <h3 className='text-xl font-bold'>{job.title}</h3>
-        </div>
-
-        <div className='mb-5'>{description}</div>
-
-        <button
-          onClick={() => setShowFullDescription((prevState) => !prevState)}
-          className='text-indigo-500 mb-5 hover:text-indigo-600'
-        >
-          {showFullDescription ? 'Less' : 'More'}
-        </button>
-
-        <h3 className='text-indigo-500 mb-2'>{job.salary} / Year</h3>
-
-        <div className='border border-gray-100 mb-5'></div>
-        <div className='flex flex-col lg:flex-row justify-between mb-4'>
-          <div className='text-orange-700 mb-3 '>
-            <FaMapMarker className='inline text-xl mr-1 mb-2 text-blue-600 font-bold'/>
-            {job.location}
+    <section className='bg-blue-50 px-4 py-10'>
+      <div className='container-xl lg:container m-auto'>
+        <h2 className='text-3xl font-bold text-indigo-500 mb-6 text-center'>
+          {isHome ? 'Recent Jobs' : 'Browse Jobs'}
+        </h2>
+        {/* Conditionally render based on loading state */}
+        {loading ? (
+          <div className="text-center my-8">
+            <Spinner/>
           </div>
-          <Link
-            to={`/jobs/${job.id}`}
-            className='h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm'
-          >
-            Read More
-          </Link>
-        </div>
+        ) : (
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+            {jobs.map((job) => (
+              <JobListing key={job.id} job={job} />
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
-}
+};
+
 export default JobListings;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

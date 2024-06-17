@@ -10,7 +10,7 @@ const ViewAllJobs = ({recentJobs}) => {
     <section className='m-auto max-w-lg my-10 px-6'>
       <Link
       onClick={()=>{setSeeMoreJobs((prevstate)=>!prevstate)}}
-        to='/jobs'
+        to='/jobsPage'
         className='block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700'
       >
         { seeMoreJobs ? "View All Jobs" : "see less jobs"}

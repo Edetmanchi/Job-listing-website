@@ -1,7 +1,7 @@
 import React from 'react'
 import Hero from '../components/Hero'
 import HomeCards from '../components/HomeCards'
-import JobListing from '../components/JobListing'
+import JobListings from '../components/JobListings'
 import ViewAllJobs from '../components/ViewAllJobs'
 
 const HomePage = () => {
@@ -10,7 +10,7 @@ const HomePage = () => {
         <Hero  title = 'Become a React Dev Anywhere'
           subtitle = 'Find the React job that fits your skill set'/>
         <HomeCards/>
-        <JobListing isHome='true'/>
+        <JobListings isHome='true'/>
         <ViewAllJobs/>
     </>
     
