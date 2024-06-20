@@ -648,24 +648,3 @@ useEffect(() => {
     </section>
   );
 };
-
-export default JobListings;import React, { useState, useEffect } from 'react';
-import JobListing from './JobListing';
-import Spinner from './Spinner'; 
-
-const JobListings = ({ isHome = false, job }) => {
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-
-useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const res = await fetch("http://localhost:8000");
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        console.log(res)
-        const data = await res.json();
-        setJobs(data);
-      } catch (error) 
